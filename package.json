@@ -1,0 +1,40 @@
+{
+  "name": "footballkik",
+  "version": "1.0.0",
+  "description": "\"A chat application for build with node, mongodb, express and socket.io",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amit-dhakad/footballkik.git"
+  },
+  "author": "Amit Dhakad (amit0502dhakad@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amit-dhakad/footballkik/issues"
+  },
+  "homepage": "https://github.com/amit-dhakad/footballkik#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "dependable": "^1.1.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.0.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "flash": "^1.1.0",
+    "loadsh": "0.0.4",
+    "mongoose": "^5.10.6",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
