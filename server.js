@@ -3,8 +3,21 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const http = require('http');
 const container = require('./container');
-const users = require('./controllers/users');
-container.resolve((users) => {
+const cookieParser = require('cookie-parser');
+// const validator = require('express-validator');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
+const flash = require('flash');
+const passport = require('passport');
+
+container.resolve(function (users) {
+  mongoose.Promise = global.Promise;
+  mongoose.connect('mongodb://localhost:27017/footballkik', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
   const app = SetupExpress();
 
   function SetupExpress() {
@@ -21,9 +34,23 @@ container.resolve((users) => {
 
   function ConfigureExpress(app) {
     app.use(express.static('public'));
+    app.use(cookieParser());
     app.set('view engine', 'ejs');
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
+    // app.use(validator());
+    app.use(
+      session({
+        secret: 'thisissecretkey',
+        resave: true,
+        saveInittialized: true,
+        store: new MongoStore({ mongooseConnection: mongoose.connection }),
+      })
+    );
+
+    app.use(flash());
+    app.use(passport.initialize());
+    app.use(passport.session());
   }
 });
 

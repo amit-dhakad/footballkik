@@ -1,6 +1,6 @@
 'use_strict';
 
-module.exports = (_) => {
+module.exports = function (_) {
   return {
     SetRouting: function (router) {
       router.get('/', this.indexPage);
